@@ -13,13 +13,7 @@ export interface Transaction {
 export class AddTransaction {
   static readonly type = '[Transaction] Add';
   constructor(public payload: Transaction) {}
-}
-
-// Acción para guardar una transacción pendiente
-export class PendingTransaction {
-  static readonly type = '[Transaction] Update Status';
-  constructor(public id: number, public status: 'pending') {}
-}
+} 
 
 // Acción para actualizar el estado de una transacción existente
 export class UpdateTransactionStatus {
