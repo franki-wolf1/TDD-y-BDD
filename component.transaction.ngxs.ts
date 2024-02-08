@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Store, Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import { Store } from '@ngxs/store';
 import { Transaction } from './transaction.state';
 import { AddTransaction } from './transaction.actions';
 
@@ -22,6 +21,7 @@ export class TransactionFormComponent {
 
   constructor(private store: Store) {}
 
+  // Método para enviar el formulario de transacción
   submitForm() {
     const transaction: Transaction = {
       id: Math.floor(Math.random() * 1000), // Genera un ID aleatorio (simulación)
@@ -30,10 +30,13 @@ export class TransactionFormComponent {
       amount: this.amount,
       status: 'pending'
     };
+    // Despacha la acción 'AddTransaction' con la nueva transacción
     this.store.dispatch(new AddTransaction(transaction));
+    // Resetea el formulario después de enviar la transacción
     this.resetForm();
   }
 
+  // Método para restablecer los campos del formulario
   resetForm() {
     this.sender = '';
     this.recipient = '';
